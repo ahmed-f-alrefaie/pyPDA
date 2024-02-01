@@ -1,10 +1,11 @@
 import logging
+
 logger = logging.getLogger("pypda")
 
 from pypda.api import plot_waveform
 
 
-def sample_test(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=False):
+def sample_test(plot_dir="plot", length=10, bpm=65, sampling_rate=49.8, png=False):
     """
 
     :param plot_dir:
@@ -15,8 +16,10 @@ def sample_test(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=Fals
     """
     from pypda.pulse_wave import PulseWave
     import os
+
     os.makedirs(plot_dir, exist_ok=True)
     from pypda.parameters import PulseWaveParameters
+
     p = PulseWaveParameters()
 
     p.normal.beat_length.mean = 100
@@ -32,9 +35,62 @@ def sample_test(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=Fals
     p.abnormal.delta_time[2].mean = 5
     p.abnormal.delta_time[3].mean = 7.3
     p.normal.scale = (
-        10, 5, .2, .2, .2, .2, .2, .2, .2, .2, .2, .5, .5, .5, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2)
+        10,
+        5,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.5,
+        0.5,
+        0.5,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+    )
 
-    p.abnormal.scale = (10, 20, .2, .2, .2, .2, .2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+    p.abnormal.scale = (
+        10,
+        20,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+    )
     logger.debug(f"Parameters for normal =\n{p.normal}")
     logger.debug(f"Parameters for abnormal =\n{p.abnormal}")
     wave = PulseWave(parameters=p, bpm=bpm, length=length, sampling_rate=sampling_rate)
@@ -44,7 +100,7 @@ def sample_test(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=Fals
     return x, y, t
 
 
-def sample(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=False):
+def sample(plot_dir="plot", length=10, bpm=65, sampling_rate=49.8, png=False):
     """
 
     :param plot_dir:
@@ -55,8 +111,11 @@ def sample(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=False):
     """
     from pypda.pulse_wave import PulseWave
     import os
-    os.makedirs(plot_dir, exist_ok=True)
+
+    if png:
+        os.makedirs(plot_dir, exist_ok=True)
     from pypda.parameters import PulseWaveParameters
+
     p = PulseWaveParameters()
 
     p.normal.beat_length.mean = 100
@@ -68,9 +127,62 @@ def sample(plot_dir='plot', length=10, bpm=65, sampling_rate=49.8, png=False):
     p.abnormal.pulse_amplitudes[3].mean = 2.2
     p.abnormal.pulse_amplitudes[4].mean = 1.1
     p.normal.scale = (
-        10, 5, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2, .2)
+        10,
+        5,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+    )
 
-    p.abnormal.scale = (10, 20, .2, .2, .2, .2, .2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+    p.abnormal.scale = (
+        10,
+        20,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+    )
     logger.debug(f"Parameters for normal =\n{p.normal}")
     logger.debug(f"Parameters for abnormal =\n{p.abnormal}")
     wave = PulseWave(parameters=p, bpm=bpm, length=length, sampling_rate=sampling_rate)
